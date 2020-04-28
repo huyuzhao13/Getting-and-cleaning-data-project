@@ -50,7 +50,7 @@ data_with_activity_and_subject<-cbind(data_with_activity,subject_number_merge)
 colnames(data_with_activity_and_subject)<-mgsub(colnames(data_with_activity_and_subject),c("^t","^f","Acc","[(][)]","X","std","Y","Z","Mag","Gyro","-","BodyBody","mean"),c("Time","Frequency","Accelerometer","","X_axis","Standard_deviation","Y_axis","Z_axis","Magnitude","Gyroscope","","Body","Mean"))
 ## From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject
 tidy_data<- ddply(data_with_activity_and_subject, c("subject","activities"), numcolwise(mean))
-if (!file.exists("tidydata.csv")){
-  write.table(tidy_data, "tidydata.csv",row.names=F,sep=",")
+if (!file.exists("tidydata.txt")){
+  write.table(tidy_data, "tidydata.txt",row.names=F)
 }
 

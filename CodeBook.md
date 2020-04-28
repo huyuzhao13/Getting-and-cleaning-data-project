@@ -14,9 +14,9 @@ The "run_analysis.R" file is the R code to download the raw data, process the ra
 6. Change value of "activities" into the acutall activity names instead of integers.
 7. Use descriptive names to name the different measurements (variables).
 8. Create a second, independent tidy data set called "tidy_data" with the average of each measurement for each subject and each activity done by that subject.
-9. Write the "tidy_data" into the "tidy data.csv" file.
+9. Write the "tidy_data" into the "tidy data.txt" file.
 
-Explanation of the variables in the "tidy data.csv" file.
+Explanation of the variables in the "tidy data.txt" file.
 subject: subject number
         1..30 .number assigned to each person (subject) who volunteered for the measurements.
 activities: activity
@@ -27,7 +27,7 @@ activities: activity
         SITTING .The subject was sitting.
         STANDING .The subject was standing.
         LAYING .The subject was laying down.
-For other variables in the "tidy data.csv" file:
+For other variables in the "tidy data.txt" file:
 The other variables come from the accelerometer and gyroscope 3-axial raw signals TimeAccelerometerXYZ and TimeBodyGyroscopeXYZ. These time domain signals (prefix 'time' to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (TimeBodyAccelerometer-XYZ and TimeGravityAccelerometer-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz. 
 
 Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals (TimeBodyAccelerometerJerk-XYZ and TimeBodyGyroscopeJerk-XYZ). Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm (TimeBodyAccelerometerMagnitude, TimeGravityAccelerometerMagnitude, TimeBodyAccelerometerJerkMagnitude, TimeBodyGyroscopeMagnitude, TimeBodyGyroscopeJerkMagnitude). 
