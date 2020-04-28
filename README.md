@@ -8,4 +8,5 @@ This repository includes the following files:
 5. "CodeBook.md": this is the code book that explains what the raw data is, what steps were taken to transform the raw data into the tidy data, and the variable names and units in the tidy data set.
 
 How the scripts in this repository works:
+
 If you run "run_analysis.R" in R, it will automatically download the raw data to your working directory, unzip the data, go through several steps to process the data, generate a tidy data set and write the "tidydata.csv" into your current working directory. The "CodeBook.md" explains how the "run_analysis.R" works and the variable names and units in the "tidyddata.csv".
