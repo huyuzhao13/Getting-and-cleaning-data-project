@@ -17,3 +17,28 @@ The "run_analysis.R" file is the R code to download the raw data, process the ra
 9. Write the "tidy_data" into the "tidy data.csv" file.
 
 Explanation of the variables in the "tidy data.csv" file.
+subject: subject number
+        1..30 .number assigned to each person (subject) who volunteered for the measurements.
+activities: activity
+        activities the subject was doing when measurements were taken.
+        WALKING .The subject was walking.
+        WALKING_UPSTAIRS .The subject was walking upstairs.
+        WALKING_DOWNSTAIRS .The subject was walking downstairs.
+        SITTING .The subject was sitting.
+        STANDING .The subject was standing.
+        LAYING .The subject was laying down.
+For other variables in the "tidy data.csv" file:
+The other variables come from the accelerometer and gyroscope 3-axial raw signals TimeAccelerometerXYZ and TimeBodyGyroscopeXYZ. These time domain signals (prefix 'time' to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (TimeBodyAccelerometer-XYZ and TimeGravityAccelerometer-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz. 
+
+Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals (TimeBodyAccelerometerJerk-XYZ and TimeBodyGyroscopeJerk-XYZ). Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm (TimeBodyAccelerometerMagnitude, TimeGravityAccelerometerMagnitude, TimeBodyAccelerometerJerkMagnitude, TimeBodyGyroscopeMagnitude, TimeBodyGyroscopeJerkMagnitude). 
+
+Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing FrequencyBodyAccelerometer-XYZ, FrequencyBodyAccelerometerJerk-XYZ, FrequencyBodyGyroscope-XYZ, FrequencyBodyAccelerometerMagnitude, FrequencyBodyAccelerometerJerkMagnitude, FrequencyBodyGyroscopeMagnitude, FrequencyBodyGyroscopeJerkMagnitude. (Note the frequency to indicate frequency domain signals). 
+
+These signals were used to estimate variables of the feature vector for each pattern:  
+'X_axis','Y_axis','Z_axis' are used to denote 3-axial signals in the X, Y and Z directions.
+
+The set of variables that were estimated from these signals are: 
+Mean: Mean value
+Standard_deviation: Standard deviation
+
+All these other variables were summarized by taking the average values for each subject and each activity this subject did.
