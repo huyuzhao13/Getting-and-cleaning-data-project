@@ -6,3 +6,6 @@ This repository includes the following files:
 3. "run_analysis.R": this is the script file to download data, process data and to generate the tidy data set.
 4. "tidydata.csv": this is the tidy data set generated in the end. If you run the code in "run_analysis.R" in R console or R Studio, you will get this tidy data set.
 5. "CodeBook.md": this is the code book that explains what the raw data is, what steps were taken to transform the raw data into the tidy data, and the variable names and units in the tidy data set.
+
+How the scripts in this repository works:
+If you run "run_analysis.R" in R, it will automatically download the raw data to your working directory, unzip the data, go through several steps to process the data, generate a tidy data set and write the "tidydata.csv" into your current working directory. The "CodeBook.md" explains how the "run_analysis.R" works and the variable names and units in the "tidyddata.csv".
