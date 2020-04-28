@@ -1,6 +1,16 @@
-## Load packages to be used (please install the following packages before load them)
+## Load packages to be used
+if (!"dplyr" %in% installed.packages()){
+  install.packages("dplyr")
+}
+if (!"mgsub" %in% installed.packages()){
+  install.packages("mgsub")
+}
+if (!"plyr" %in% installed.packages()){
+  install.packages("plyr")
+}
 library(dplyr)
 library(mgsub)
+library(plyr)
 ## Download and unzip files
 if ((!file.exists("data.zip"))&(!dir.exists("UCI HAR Dataset"))){
   download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip","data.zip",mode="wb")
@@ -36,35 +46,11 @@ colnames(data_with_activity)[67]<-"activities"
 subject_number_merge<-rbind(train_subject_number,test_subject_number)
 colnames(subject_number_merge)<-"subject"
 data_with_activity_and_subject<-cbind(data_with_activity,subject_number_merge)
-##Appropriately labels the data set with descriptive variable names
+## Appropriately labels the data set with descriptive variable names
 colnames(data_with_activity_and_subject)<-mgsub(colnames(data_with_activity_and_subject),c("^t","^f","Acc","[(][)]","X","std","Y","Z","Mag","Gyro","-","BodyBody","mean"),c("Time","Frequency","Accelerometer","","X_axis","Standard_deviation","Y_axis","Z_axis","Magnitude","Gyroscope","","Body","Mean"))
 ## From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject
-tidy_data_activity<-NULL
-for (i in 1:66){
-  if(i==1){
-    t<-tapply(data_with_activity_and_subject[,i],data_with_activity_and_subject$activities,mean)
-    t<-as.data.frame(t)
-    colnames(t)<-colnames(data_with_activity_and_subject)[i]
-    tidy_data_activity<-t
-  } else {
-    t<-tapply(data_with_activity_and_subject[,i],data_with_activity_and_subject$activities,mean)
-    t<-as.data.frame(t)
-    colnames(t)<-colnames(data_with_activity_and_subject)[i]
-    tidy_data_activity<-cbind(tidy_data_activity,t)
-  }
+tidy_data<- ddply(data_with_activity_and_subject, c("subject","activities"), numcolwise(mean))
+if (!file.exists("tidydata.csv")){
+  write.table(tidy_data, "tidydata.csv",row.names=F,sep=",")
 }
-tidy_data_subject<-NULL
-for (i in 1:66){
-  if(i==1){
-    t<-tapply(data_with_activity_and_subject[,i],data_with_activity_and_subject$subject,mean)
-    t<-as.data.frame(t)
-    colnames(t)<-colnames(data_with_activity_and_subject)[i]
-    tidy_data_subject<-t
-  } else {
-    t<-tapply(data_with_activity_and_subject[,i],data_with_activity_and_subject$subject,mean)
-    t<-as.data.frame(t)
-    colnames(t)<-colnames(data_with_activity_and_subject)[i]
-    tidy_data_subject<-cbind(tidy_data_subject,t)
-  }
-}
-tidydata<-rbind(tidy_data_activity,tidy_data_subject)
+
